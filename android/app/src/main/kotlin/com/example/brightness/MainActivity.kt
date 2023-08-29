@@ -28,7 +28,7 @@ class MainActivity: FlutterActivity() {
                     window.attributes = layout
                 }
                 "getBrightness" -> {
-                    result.success(layout.screenBrightness)
+                    result.success(layout.screenBrightness.toString())
                 } else -> {
                     result.notImplemented()
                 }

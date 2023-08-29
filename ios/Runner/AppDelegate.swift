@@ -10,13 +10,13 @@ import Flutter
     GeneratedPluginRegistrant.register(with: self)
 
     let controller : FlutterViewController = window?rootViewController as! FlutterViewController
-    let keychainChannel = FlutteMethodChannel(name:"brightnessPlatform",binaryMessager: controller.binaryMessager)
+    let keychainChannel = FlutterMethodChannel(name:"brightnessPlatform",binaryMessenger: controller.binaryMessenger)
 
     keychainChannel.setMethodCallHandler({
       (call:FlutterMethodCall, result: @escaping FlutterResult) -> Void in
 
       if call.method == "setBrightness" {
-          if let args = call.arguments as? Dictionary<String,Any>, let data = args['brightness'] as? Double {
+          if let args = call.arguments as? Dictionary<String,Any>, let data = args["brightness"] as? Double {
             self.window.windowScene?.screen.brightness = CGFloat(data)
           } else {
             result(FlutterError.init(code : "errorSetDebug",message:  "data or format error", details: nil))

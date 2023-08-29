@@ -34,7 +34,8 @@ class _MyAppState extends State<MyApp> {
   Future<void> toOriginal() async {
     final og = await current;
     try {
-      await brightnessChannel.invokeMethod("setBrightness", {"brightness": og});
+      await brightnessChannel
+          .invokeMethod("setBrightness", {"brightness": double.parse(og)});
     } on PlatformException catch (e) {
       throw "${e.message}";
     }
